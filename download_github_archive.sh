@@ -17,7 +17,7 @@ do
 	for m in ${months[*]}
 	do
 		wget http://data.gharchive.org/$y-$m-{01..31}-{0..23}.json.gz
-		mkdir -p /spark_ds_github/$y/$m/
+		hdfs dfs -mkdir /user/spark/spark_ds_github/$y/$m
 		hdfs dfs -copyFromlocal ~/$y-$m-{01..31}-{0..23}.json.gz /user/spark/spark_ds_github/$y/$m/
 	done
 	sleep 60
